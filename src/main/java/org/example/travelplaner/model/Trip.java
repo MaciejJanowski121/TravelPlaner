@@ -1,4 +1,4 @@
-package model;
+package org.example.travelplaner.model;
 import jakarta.persistence.*;
 import lombok.*;
 
