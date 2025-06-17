@@ -3,10 +3,7 @@ package org.example.travelplaner.controller;
 import org.example.travelplaner.model.Trip;
 import org.example.travelplaner.service.TripService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TripController {
@@ -25,5 +22,18 @@ public TripController(TripService tripService) {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/newTrip")
+    public ResponseEntity<Trip> createTrip(@RequestBody Trip trip) {
+Trip newTrip = tripService.saveTrip(trip);
+return ResponseEntity.status(201).body(newTrip);
+
+    }
+    
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteTrip(@PathVariable Long id) {
+    tripService.deleteTrip(id);
+    return ResponseEntity.noContent().build();
     }
 }
