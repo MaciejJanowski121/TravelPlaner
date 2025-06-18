@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Setter
+@Getter
 @Entity
 public class Trip {
 
